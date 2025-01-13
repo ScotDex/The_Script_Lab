@@ -1,3 +1,3 @@
 # Script Library
 
-New and old scripts. Kept as storage.
+New and old scripts categorized.
