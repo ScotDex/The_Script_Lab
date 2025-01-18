@@ -4,6 +4,8 @@
 
 
 
+
+
 $sFolder = "$env:APPDATA\Microsoft\Signatures"
 $sBackupFolder = "$env:APPDATA\Microsoft\SignaturesBackup"
 
