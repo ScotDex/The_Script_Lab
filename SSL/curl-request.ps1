@@ -1,8 +1,26 @@
-# Runs curl request should POSTMAN not be available for the task.
-
-# Untested
 
 
+<#
+.SYNOPSIS
+    Sends a GET request to a specified FHIR endpoint with a provided API key.
+
+.DESCRIPTION
+    This script sets up a custom certificate policy to trust all SSL certificates, prompts the user for an API key, 
+    and sends a GET request to a specified FHIR endpoint with the provided API key in the headers.
+
+.PARAMETER apiKey
+    The API key to be included in the request headers for authentication.
+
+.NOTES
+    The script uses a custom certificate policy to bypass SSL certificate validation. 
+    This is generally not recommended for production environments due to security risks.
+
+.EXAMPLE
+    .\curl-request.ps1
+    Prompts the user to enter an API key and sends a GET request to the specified FHIR endpoint.
+#>
+
+# Set up a custom certificate policy to trust all SSL certificates
 add-type @"
 
 using http://System.Net ;
