@@ -30,6 +30,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or suggestions, please open an issue or contact us at [support@scotdex.com](mailto:support@scotdex.com).
+For any questions or suggestions, please open an issue or contact us at [support@scotdex.com](mailto:scottishdex@protonmail.com).
 
 Happy scripting!
