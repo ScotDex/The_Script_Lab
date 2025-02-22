@@ -32,7 +32,7 @@
     This command runs the script and scans the default target URL (https://synanetics.com) for security risks.
 
 #>
-$TargetURL = "https://synanetics.com"
+$TargetURL = ""
 $Endpoints = @("/.git/", "/.env", "/config.php", "/backup.zip", "/wp-config.php", "/admin", 
     "/robots.txt", "/sitemap.xml", "/login", "/register", "/users", "/search")
 

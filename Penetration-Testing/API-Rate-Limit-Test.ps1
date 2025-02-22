@@ -1,4 +1,4 @@
-$TargetURL = "halo.tsg.com"
+$TargetURL = ""
 $Endpoints = @("/api/v1/", "/api/v2/", "/login", "/register", "/admin", "/users", "/search", "/health", "/status")
 
 foreach ($Endpoint in $Endpoints) {
