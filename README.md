@@ -1,28 +1,35 @@
-# PowerShell Script Library
+# Script Library
 
-A collection of scripts for a variety of purposes, categorized by the roles they are suited for.
+Welcome to the ScotDex Script Library! This repository contains a collection of useful scripts for various tasks and automation. Whether you're looking to streamline your workflow or automate repetitive tasks, you'll find a script here to help you out.
 
-The library is always growing! If you have any ideas or suggestions that could prove useful in everyday tasks, please feel free to create a pull request with your idea.
+## Contents
 
----
+- **Automation Scripts**: Scripts to automate routine tasks.
+- **Utility Scripts**: Handy utilities for various purposes.
+- **Data Processing Scripts**: Tools for processing and analyzing data.
 
-## Some Inspiration for Your Idea
+## Getting Started
 
-- **What workload do you want to automate?**
-- **What should the script achieve?**
-- **Dependencies**  
-  Include any necessary modules, tools, or configurations.
-- **Run PowerShell in Admin Mode**  
-  Ensure scripts are tested and can handle elevated permissions if required.
+1. **Clone the repository**:
+  ```sh
+  git clone https://github.com/ScotDex/Script-Library.git
+  ```
+2. **Navigate to the directory**:
+  ```sh
+  cd Script-Library
+  ```
+3. **Explore the scripts** and find the ones that suit your needs.
 
----
+## Contributing
 
-## Authors
+We welcome contributions! If you have a script that you think would be useful to others, please feel free to submit a pull request.
 
-**Gillen Reid**  
-Operations Team  
-[gillen.reid@synanetics.com](mailto:gillen.reid@synanetics.com)
+## License
 
----
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Feel free to contribute and collaborate.
+## Contact
+
+For any questions or suggestions, please open an issue or contact us at [support@scotdex.com](mailto:support@scotdex.com).
+
+Happy scripting!
