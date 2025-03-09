@@ -34,3 +34,19 @@ Invoke-RestMethod -Uri "$urlbase/" -Headers $headers -Method Get
 #Invoke-RestMethod -Uri $uri -Headers $headers -Method Get
 
 
+# param (
+#     [Parameter(Mandatory=$true)]
+#     [string]$TargetURL,
+
+#     [Parameter(Mandatory=$true)]
+#     [hashtable]$Headers,
+
+#     [Parameter(Mandatory=$true)]
+#     [string]$Payload
+# )
+
+# $Body = @{ "query" = $Payload } | ConvertTo-Json
+# Write-Host "[*] Sending large payload to $TargetURL..."
+# Invoke-WebRequest -Uri $TargetURL -Method POST -Headers $Headers -Body $Body -TimeoutSec 10
+
+
