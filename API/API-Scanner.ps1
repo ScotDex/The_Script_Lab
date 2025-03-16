@@ -25,7 +25,7 @@
 
     This will output the status of each endpoint, indicating whether it was found or failed to respond.
 #>
-$TargetURL = "halo.tsg.com"
+$TargetURL = ""
 $Endpoints = @("/api/v1/", "/api/v2/", "/login", "/register", "/admin", "/users", "/search", "/health", "/status")
 
 foreach ($Endpoint in $Endpoints) {
