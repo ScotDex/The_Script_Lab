@@ -14,6 +14,9 @@ package-lock.json
 package.json
 *.class
 
+# Local host folder
+local-host/
+
 # Compiled Python bytecode
 *.py[cod]
 
