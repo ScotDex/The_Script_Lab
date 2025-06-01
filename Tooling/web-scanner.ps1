@@ -1,5 +1,5 @@
 
-$TargetURL = "halo.tsg.com"
+$TargetURL = ""
 $Endpoints = @("/.git/", "/.env", "/config.php", "/backup.zip", "/wp-config.php", "/admin", 
     "/robots.txt", "/sitemap.xml", "/login", "/register", "/users", "/search")
 
@@ -82,7 +82,7 @@ Write-Host "`n[*] Scan Completed. Report saved to WebScan_Report.txt" -Foregroun
 
 
 # Target URL of the exposed .env file
-$target = "http://halo.tsg.com/.env"
+$target = ""
 
 # Send the request
 $response = Invoke-WebRequest -Uri $target -UseBasicParsing -ErrorAction SilentlyContinue
