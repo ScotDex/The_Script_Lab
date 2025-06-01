@@ -22,7 +22,7 @@
     Date: YYYY-MM-DD
     Version: 1.0
 #>
-$TargetURL = ""  # Set your target URL
+$TargetURL = "halo.tsg.com"  # Set your target URL
 $Endpoints = @("/api/v1/", "/api/v2/", "/login", "/register", "/admin", "/users", "/search", "/health", "/status")
 
 foreach ($Endpoint in $Endpoints) {

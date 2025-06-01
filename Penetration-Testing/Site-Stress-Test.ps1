@@ -1,62 +1,70 @@
-<#
-.SYNOPSIS
-    Performs a stress test on a specified target URL by sending multiple HTTP GET requests concurrently.
-
-.DESCRIPTION
-    This script sends a specified number of HTTP GET requests to a target URL using multiple threads to simulate a stress test.
-    It measures the time taken for each request and logs the result.
-
-.PARAMETER targetURL
-    The URL to which the HTTP GET requests will be sent.
-
-.PARAMETER requestCount
-    The total number of HTTP GET requests to be sent during the stress test. Default is 1000.
-
-.PARAMETER MaxThreads
-    The maximum number of concurrent threads to be used for sending requests. Default is 20.
-
-.NOTES
-    The script uses runspaces to achieve concurrency and measures the duration of each request.
-    If a request fails, it logs the failure and continues with the next request.
-
-.EXAMPLE
-    .\stresstest.ps1 -targetURL "http://example.com" -requestCount 500 -MaxThreads 10
-    This example sends 500 HTTP GET requests to "http://example.com" using up to 10 concurrent threads.
-
-#>
-$targetURL = ""
-$requestCount = 1000
-$MaxThreads = 20
+$targetURL = "tsg.com"
+$requestCount = 10000
+$MaxThreads = 505
 
 $RunspacePool = [runspacefactory]::CreateRunspacePool(1, $MaxThreads)
 $RunspacePool.Open()
 $Jobs = @()
+
+$progress = 0
+$progressIncrement = [math]::round(100 / $requestCount, 2)
+
 
 for ($i = 1; $i -le $requestCount; $i++) {
     $Runspace = [powershell]::Create().AddScript({
         param ($targetURL, $i)
         try {
             $StartTime = Get-Date
-            Invoke-WebRequest -Uri $targetURL -Method Get -UseBasicParsing -TimeoutSec 10
+            $response = Invoke-WebRequest -Uri $targetURL -Method Get -UseBasicParsing -TimeoutSec 10
             $EndTime = Get-Date
             $duration = ($EndTime - $StartTime).totalmilliseconds
             Write-Host "Request $i completed in $duration ms"
+
+            # Track response times
+            $script:responseTimes += $duration
+
+            # Check if response time exceeds the slow threshold
+            if ($duration -gt $script:slowThreshold) {
+                Write-Host "Warning: Request $i is slow ($duration ms)."
+            }
+
         } catch {
+            # Catching different types of errors
+            if ($_.Exception -is [System.Net.WebException]) {
+                Write-Host "Request $i failed: WebException - Website might be unreachable."
+            } elseif ($_.Exception -is [System.TimeoutException]) {
+                Write-Host "Request $i failed: TimeoutException - The request timed out."
+            } else {
+                Write-Host "Request $i failed: $_"
+            }
             $duration = 0
-            Write-Host "Request $i failed"
         }
     }).AddArgument($targetURL).AddArgument($i)
 
     $Runspace.RunspacePool = $RunspacePool
     $Jobs += @{pipe = $Runspace; status = $Runspace.BeginInvoke()}
+
+    # Update progress bar
+    $progress = $progress + $progressIncrement
+    Write-Progress -PercentComplete $progress -Status "Requesting..." -Activity "Request $i of $requestCount"
 }
 
-# Write-Host "Waiting for all requests to complete..."
+# Wait for all requests to complete
+$completedJobs = 0
 foreach ($Job in $Jobs) {
     $Job.Pipe.EndInvoke($Job.Status)
     $Job.Pipe.Dispose()
+    $completedJobs++
+    
+    # Update the progress bar after each job finishes
+    $progress = ($completedJobs / $requestCount) * 100
+    Write-Progress -PercentComplete $progress -Status "Waiting for requests to complete..." -Activity "Completed $completedJobs of $requestCount"
 }
+
+# Finalize progress bar
+Write-Progress -PercentComplete 100 -Status "All requests completed." -Activity "Stress test completed"
 
 $RunspacePool.Close()
 $RunspacePool.Dispose()
-# Write-Host "Stress test completed."
+
+Write-Host "Stress test completed."
