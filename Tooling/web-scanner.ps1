@@ -105,10 +105,8 @@ if ($response.StatusCode -eq 200 -and $response.Content) {
 }
 
 
-Invoke-WebRequest -Uri "http://tsg.com" -UseBasicParsing | Select-Object -ExpandProperty Headers
+Invoke-WebRequest -Uri "" -UseBasicParsing | Select-Object -ExpandProperty Headers
 
-Invoke-WebRequest -Uri "http://tsg.com" -UseBasicParsing | Select-Object -ExpandProperty Content
+Invoke-WebRequest -Uri "" -UseBasicParsing | Select-Object -ExpandProperty Content
 
-http://tsg.com/?search=<script>alert(1)</script>
 
-http://halo.tsg.com/?search=<script>alert(1)</script>
