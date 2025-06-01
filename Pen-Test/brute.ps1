@@ -1,5 +1,5 @@
 # Target Information
-$TargetURL = "https://halo.tsg.com"
+$TargetURL = ""
 $LoginEndpoint = "/login"
 $LoginURL = "$TargetURL$LoginEndpoint"
 
