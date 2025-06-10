@@ -1,4 +1,4 @@
-$baseUrl = "https://halo.tsg.com/search?term="
+$baseUrl = ""
 $payloads = @(
     "<script>alert(1)</script>"
 )
