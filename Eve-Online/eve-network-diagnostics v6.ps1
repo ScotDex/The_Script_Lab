@@ -120,7 +120,7 @@ $tracework = {
     return $trace
 }
 
-cls
+Clear-Host
 Write-Output  "`n`n`n`nThis script will test your connection to EVE Online and save a file in the same location the script is running from.`n`n"
 Read-Host -Prompt "Press Enter to start"
 
@@ -140,7 +140,7 @@ $pingjob = Start-Job -InitializationScript $pingflow -ScriptBlock $pingwork -Arg
 #TRACE START
 $tracejob = Start-Job -InitializationScript $traceflow -ScriptBlock $tracework -ArgumentList (,$PINGservers)
 
-cls
+Clear-Host
 Write-Output  "Background PING and TRACE jobs have now started"
 Write-Output  "`n`n`n`n`n`n`n`nTesting service avalability:"
 

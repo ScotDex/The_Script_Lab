@@ -1,12 +1,3 @@
-
-# Developed by Dexomus Viliana
-
-# Designed to look at fleet logs, and will grab the latest exported loot sheet and add it to your desktop as a spreadsheet.
-
-# Hopefully making fleet management slightly more practical, make sure there are no loot theifs! 
-
-# I hope you find it useful - let me know any potential ideas for progress/improvements on top of this.
-
 # Get the username of the current user
 $userName = $env:USERNAME
 
