@@ -7,12 +7,12 @@
    It also measures the elapsed time for the operation and outputs the result.
 
 .EXAMPLE
-   .\dnscache-clear.ps1
+   .\system-clean.ps1
    This command runs the script to clear the DNS client cache and displays the elapsed time.
 
 .NOTES
    Author: GillenReidSynanetics
-   FilePath: /GillenReidSynanetics/syn-support-operational-scripts/Beta/dnscache-clear.ps1
+   FilePath: /GillenReidSynanetics/syn-support-operational-scripts/Beta/system-clean.ps1
 
 #>
 try {       
