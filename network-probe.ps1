@@ -47,5 +47,4 @@ $DnsServers | Format-Table InterfaceAlias, @{Name="DNS Servers"; Expression={($_
 Write-Host "`nDefault Gateway:"
 $DefaultGateway | Format-Table NextHop, InterfaceAlias -AutoSize
 
-Write-Host "`nNetwork Probe Complete"
-Read-Host "Press Enter to Close"
+Write-Host "`nNetwork Probe Complete"Read-Host "Press Enter to Close"
