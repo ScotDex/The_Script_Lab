@@ -3,7 +3,7 @@
 # It was recently found that multiple enviroments that I came across had customized .env files which subsequently either caused issues 
 # or cost time by having to manually rename files to fit the naming convention - as a result this script was created to take the name of the
 # .pem file and re-write the .env file - which leads to a uniform naming convention across all environments and saves time and potential human errors.
-# To be left available when SSL replacements come along 
+# To be left available when SSL replacements come along  - test
 
 
 # Procedure to update the .env file with the name of the .pem file
