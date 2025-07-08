@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
-    [string]$ClientID = "539efdfedabe4ca19575d01b6ae5ba8e",
-    [string]$ClientSecret = "xBMQMOOZVxfQI8RQPSjKEKXvqsdJKybv8UceDZjY",
+    [string]$ClientID = $env:EVE_CLIENT_ID,
+    [string]$ClientSecret = $env:EVE_CLIENT_SECRET,
     [string]$RedirectUri = "???", # Wondereing what to use for an end point because localhost:port is not an option - perhaps cloud run?
     [string]$Scopes = "publicData esi-assets.read_assets.v1"
 )

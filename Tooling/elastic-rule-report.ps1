@@ -8,8 +8,8 @@
 $ODS = Read-Host -Prompt "Please enter your ODS to search (ensure in CAPS e.g. 'RCU')"
 
 $outputFile = "$env:USERPROFILE\Desktop\Generated-Rule-Report1.csv"
-$Username = "synanetics-system"
-$Password = "Kc1cmCxYDG^bP@cMDP5u"
+$Username = $env:ELASTIC_USERNAME
+$Password = $env:ELASTIC_PASSWORD
 $credentials = "$($Username):$($Password)"
 $credentialBytes = [System.Text.Encoding]::ASCII.GetBytes($credentials)
 $EncodedCredentials = [System.Convert]::ToBase64String($credentialBytes)
