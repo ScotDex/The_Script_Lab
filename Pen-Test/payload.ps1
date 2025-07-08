@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 $baseUrl = ""
 $payloads = @(
     "<script>alert(1)</script>"
@@ -28,8 +29,8 @@ Start-Process ".\response.html"
 
 $uri = "https://halo.tsg.com/status"
 $body = @{
-    email = "test@example.com"
-    password = "SuperSecret123"
+    email = $env:TEST_EMAIL
+    password = $env:TEST_PASSWORD
 } | ConvertTo-Json
 
 $response = Invoke-RestMethod -Uri $uri -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop

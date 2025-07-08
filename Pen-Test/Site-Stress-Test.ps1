@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 $targetURL = "tsg.com"
 $requestCount = 10000
 $MaxThreads = 505

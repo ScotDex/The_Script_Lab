@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 # Target Information
 $TargetURL = ""
 $LoginEndpoint = "/login"

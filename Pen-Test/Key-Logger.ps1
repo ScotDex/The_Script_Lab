@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 <#
 .SYNOPSIS
     A simple keylogger script that logs key presses to a specified file.
