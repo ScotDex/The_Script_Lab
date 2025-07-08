@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 $baseUrl = ""
 $payloads = @(
     "<script>alert(1)</script>"

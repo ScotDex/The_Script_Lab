@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 <#
 .SYNOPSIS
     This script performs a stress test on a specified web site by sending multiple concurrent requests in a loop.
