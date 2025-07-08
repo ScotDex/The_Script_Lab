@@ -42,6 +42,11 @@ jobs:
           includeRule: '"PSAvoidGlobalAliases", "PSAvoidUsingConvertToSecureStringWithPlainText"'
           output: results.sarif
 
+      - name: Run Pester tests
+        shell: pwsh
+        run: |
+          Invoke-Pester -Path ./tests
+
       # Upload the SARIF file generated in the previous step
       - name: Upload SARIF results file
         uses: github/codeql-action/upload-sarif@v3
