@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 <#
 .SYNOPSIS
     Attempts to brute force the password for a specified user by testing a list of passwords.

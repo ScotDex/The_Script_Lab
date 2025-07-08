@@ -1,3 +1,4 @@
+# For authorized testing only. See README.md for ethical use guidelines.
 <#
 .SYNOPSIS
 This script creates a random directory under C:\Windows\System32.
