@@ -1,6 +1,6 @@
 # The Script Lab
 
-A curated collection of PowerShell scripts for everyday administration, automation, and security testing. The project gathers standalone utilities created over time and organizes them by purpose.
+An independently developed collection of PowerShell scripts for everyday administration, automation, and security testing. The project gathers standalone utilities created over time and organizes them by purpose.
 
 ## Project Purpose
 
