@@ -11,8 +11,8 @@
 
 # The code below is used to authenticate with the EVE Online API using OAuth2
 # The code is based on the example provided in the EVE Online documentation: https://esi.evetech.net/ui/?version=latest#/Character/get_characters_character_id
-$clientID="539efdfedabe4ca19575d01b6ae5ba8e"
-$clientSecret="xBMQMOOZVxfQI8RQPSjKEKXvqsdJKybv8UceDZjY"
+$clientID=$env:EVE_CLIENT_ID
+$clientSecret=$env:EVE_CLIENT_SECRET
 # $credentials = "{$username}:{$password}"
 # $credentialBytes = [System.Text.Encoding]::ASCII.GetBytes($credentials)
 # $base64AuthInfo = [Convert]::ToBase64String(($credentialBytes))
@@ -27,7 +27,7 @@ $assetsUrl = "https://esi.evetech.net/latest/characters/95282689/assets/"
 $encodedAssets = [System.Web.HttpUtility]::UrlEncode($assetsUrl)
 Write-Host "Please visit this URL to authenticate: $authUrl"
 
-$authorizationCode = "ZaazFJl76kSX_87Z0GQJ1A"
+$authorizationCode = $env:EVE_AUTH_CODE
 
 $body = @{
     grant_type    = "authorization_code"
@@ -52,5 +52,4 @@ $uri = "https://esi.evetech.net/latest/characters/95282689/"
 $characterInfo = Invoke-RestMethod -Uri $uri -Headers $headers -Method Get
 $characterInfo
 
-$assetResponse = Invoke-RestMethod -Uri "$encodedAssets" -Headers $headers -Method Get
-$assetResponse
+$assetResponse = Invoke-RestMethod -Uri "$encodedAssets" -Headers $headers -Method Get$assetResponse
