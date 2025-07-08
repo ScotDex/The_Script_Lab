@@ -25,7 +25,7 @@
 
 #>
 # Login to Azure
-Connect-AzAccount -TenantId '2b561511-7ddf-495c-8164-f56ae776c54a' -DeviceCode
+Connect-AzAccount -TenantId '' -DeviceCode
 
 
 # Get all subscriptions

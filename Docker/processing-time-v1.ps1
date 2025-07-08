@@ -1,8 +1,39 @@
-# Variables and array to capture information
+
+<#
+.SYNOPSIS
+    Processes a log file to calculate time differences between message events and exports summary statistics to an Excel file.
+
+.DESCRIPTION
+    This script reads a specified log file, extracts ISO timestamps from lines containing "MESSAGEREADER: New message received", 
+    calculates the time differences between consecutive messages, and computes the average time between messages. 
+    The results are exported to an Excel file as a summary table using the ImportExcel module.
+
+.PARAMETER logfilepath
+    The path to the log file to be processed. Must be set before running the script.
+
+.PARAMETER excelOutput
+    The path where the Excel summary report will be saved. Defaults to the user's Desktop as "PivotReport.xlsx".
+
+.NOTES
+    - Requires the ImportExcel PowerShell module.
+    - The log file must contain lines with the pattern: MESSAGEREADER: New message received and a "time" field in ISO format.
+    - If the Excel output file does not exist, it will be created.
+    - The script outputs warnings for any timestamps that cannot be parsed.
+
+.OUTPUTS
+    - Writes time differences and average time between messages to the console.
+    - Generates an Excel file with a summary table containing the log file name, average time in seconds, and total messages.
+
+.EXAMPLE
+    # Set the log file path and run the script
+    $logfilepath = "C:\Logs\messages.log"
+    .\processing-time-v1.ps1
+
+#>
 
 Import-Module ImportExcel
 
-$logfilepath = "C:\Users\GillenReid\OneDrive - synanetics.com\Desktop\c6c6abcbd73838bc8762fde9f48be2ad701e5ef4e5eced48a0c34d746c091440-json.log\c6c6abcbd73838bc8762fde9f48be2ad701e5ef4e5eced48a0c34d746c091440-json.log.txt"
+$logfilepath = ""
 $excelOutput = "$env:USERPROFILE\Desktop\PivotReport.xlsx"
 
 if (-not (Test-Path -Path $excelOutput)) {

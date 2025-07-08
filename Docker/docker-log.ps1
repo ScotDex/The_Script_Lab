@@ -1,6 +1,6 @@
 
 # This script filters a log file for specific error or warning lines and exports them to a CSV file.
-$logFilePath = "C:\Users\GillenReid\OneDrive - synanetics.com\Desktop\c6c6abcbd73838bc8762fde9f48be2ad701e5ef4e5eced48a0c34d746c091440-json.log\c6c6abcbd73838bc8762fde9f48be2ad701e5ef4e5eced48a0c34d746c091440-json.log.txt"
+$logFilePath = "C:\ProgramData\Docker\docker.log"
 $csvOutput = "$env:USERPROFILE\Desktop\filenamehere.csv"
 $errorCapture = @("ERROR", "WARNING")
 $errorEntries = @()

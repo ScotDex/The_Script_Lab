@@ -36,7 +36,7 @@ $traceflow = {
                )
 
         Foreach -Parallel ($servers in $servers) {
-            $result = (Test-NetConnection $servers -TraceRoute -Hops 20).TraceRoute | Select -Skip 1
+            $result = (Test-NetConnection $servers -TraceRoute -Hops 20).TraceRoute | Select-Object -Skip 1
             Write-Output "$result $servers"
         }
     }

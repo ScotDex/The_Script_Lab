@@ -40,7 +40,7 @@ if (-not (Test-Path -Path $logFilePath)) {
 }
 
 # Function to log messages
-function Log-Message {
+function Write-Log {
     param (
         [string]$message
     )
@@ -50,23 +50,23 @@ function Log-Message {
 }
 
 # Log the start of the script
-Log-Message "Script started."
+Write-Log "Script started."
 
 # Stop the service
 try {
     Stop-Service -Name #servicenamehere -Force -ErrorAction Stop
-    Log-Message "Stopped."
+    Write-Log "Stopped."
 } catch {
-    Log-Message "Failed: $_"
+    Write-Log "Failed: $_"
 }
 
 # Start the Service
 try {
     Start-Service -Name #servicenamehere -ErrorAction Stop
-    Log-Message "Service Started."
+    Write-Log "Service Started."
 } catch {
-    Log-Message "Failed: $_"
+    Write-Log "Failed: $_"
 }
 
 # Log the end of the script
-Log-Message "Script completed."
+Write-Log "Script completed."

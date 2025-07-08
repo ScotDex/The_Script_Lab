@@ -25,7 +25,7 @@ function DiscordPing {
 
 # Discord webhook URL (optional)
 # Uncomment the following line to enable Discord notifications
-$webhookUrl = "https://discord.com/api/webhooks/1363959440960782346/u2O1gKrB2aRq0saM4Eoye6JX7EAVPdv_aToXfZD-VAPJLU_LhWoAPd70kZs72qn3HrsG" # Replace with your Discord webhook URL
+# $webhookUrl = "" # Replace with your Discord webhook URL
 
 $payload = @{
     content = "Keyword detected: $keyword`nMessage: $line"
