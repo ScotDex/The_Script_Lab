@@ -2,6 +2,8 @@
 
 An independently developed collection of PowerShell scripts for everyday administration, automation, and security testing. The project gathers standalone utilities created over time and organizes them by purpose.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X7X21RDFR0)
+
 ## Project Purpose
 
 The repository serves as a central catalogue of scripts that can assist with infrastructure management, DevOps tasks, and penetration testing. Some scripts simplify routine maintenance while others demonstrate security techniques. Use the security scripts responsibly and only in environments where you have permission to test.
